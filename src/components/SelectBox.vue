@@ -31,7 +31,7 @@
       </select>
       <slot name="input-extra" />
     </div>
-    <div class="input-error">{{ error }}</div>
+    <div class="input-error">{{ required ? error : "" }}</div>
   </div>
 </template>
 

@@ -35,7 +35,7 @@
         </slot>
       </div>
     </div>
-    <div class="input-error">{{ error }}</div>
+    <div class="input-error">{{ required ? error : "" }}</div>
   </div>
 </template>
 

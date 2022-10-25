@@ -22,7 +22,7 @@
         @input="updateInput"
       />
     </div>
-    <div class="input-error">{{ error }}</div>
+    <div class="input-error">{{ required ? error : "" }}</div>
   </div>
 </template>
 
@@ -54,9 +54,6 @@ export default defineComponent({
     },
   },
   methods: {
-    handleSubmit() {
-      console.log("handler");
-    },
     updateInput(event: Event) {
       this.$emit("update:modelValue", (event.target as HTMLInputElement).value);
     },
