@@ -10,10 +10,15 @@ module.exports = {
     "plugin:prettier/recommended",
   ],
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: 6,
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true,
+    },
   },
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "arrow-parens": "off",
+    "eol-last": "error",
   },
 };

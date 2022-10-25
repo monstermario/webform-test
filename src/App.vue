@@ -1,8 +1,4 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
   <router-view />
 </template>
 
@@ -14,17 +10,40 @@
   text-align: center;
   color: #2c3e50;
 }
-
-nav {
-  padding: 30px;
+.input-area,
+.form-radio {
+  width: 100%;
+  display: flex;
 }
-
-nav a {
+.form-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.form-input input[type="text"],
+.form-input select {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 5px 15px;
+  min-height: 40px;
+}
+.form-input > label {
+  margin-bottom: 5px;
   font-weight: bold;
-  color: #2c3e50;
 }
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.input-required-mark {
+  color: red;
+}
+.input-error {
+  font-size: 12px;
+  line-height: 14px;
+  min-height: 14px;
+  color: red;
+  padding: 0 10px;
+  margin-top: 5px;
 }
 </style>
