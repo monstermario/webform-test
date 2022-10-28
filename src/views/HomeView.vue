@@ -34,6 +34,31 @@ export default defineComponent({
           placeholder: "Input text ...",
         },
         {
+          type: "group",
+          label: "Group",
+          name: "Group",
+          fields: [
+            {
+              type: "text",
+              value: "",
+              name: "Multi-Text",
+              label: "Multi-Text",
+              required: true,
+              multiSelect: true,
+              placeholder: "Input text ...",
+            },
+            {
+              type: "select",
+              value: "",
+              name: "Multi-Select",
+              label: "Multi-Select",
+              required: true,
+              multiSelect: true,
+              options: ["ms1", "ms2", "ms3"],
+            },
+          ],
+        },
+        {
           type: "check",
           value: [],
           name: "Checkbox1",
@@ -63,30 +88,34 @@ export default defineComponent({
           name: "Select1",
           label: "Select1",
           required: true,
-          options: {
-            Select1: "s1",
-            Select2: "s2",
-            Select3: "s3",
-          },
+          options: ["s1", "s2", "s3"],
         },
       ],
     };
   },
   methods: {
-    checkValidate() {
+    checkValidate(fields: any) {
       let passed = true;
-      this.fields = this.fields.map((field) => {
+      const newfields = fields.map((field: any) => {
+        if (field.type === "group") {
+          [passed, field.fields] = this.checkValidate(field.fields);
+          console.log(field.fields);
+        }
         if (field.required && field.value.length === 0) {
           passed = false;
           return { ...field, error: "This field is required." };
         } else return { ...field, error: "" };
       });
-      return passed;
+      this.fields = newfields;
+      return [passed, newfields];
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     handleSubmit(e: any) {
       if (e?.type === "submit") return;
-      if (this.checkValidate()) {
+      const [passed, newFileds] = this.checkValidate(this.fields);
+      console.log(passed);
+      if (passed) {
+        this.fields = newFileds;
         this.fields.forEach((field) => {
           console.log(field.name, ": ", field.value);
         });

@@ -22,14 +22,15 @@
   margin-bottom: 20px;
 }
 .form-input input[type="text"],
-.form-input select {
+.form-input .select-text,
+.input-multi {
   width: 100%;
   border-radius: 8px;
   border: 1px solid #aaa;
   font-size: 14px;
   line-height: 16px;
   padding: 5px 15px;
-  min-height: 40px;
+  min-height: 28px;
 }
 .form-input > label {
   margin-bottom: 5px;
@@ -45,5 +46,8 @@
   color: red;
   padding: 0 10px;
   margin-top: 5px;
+}
+ul li {
+  list-style: none;
 }
 </style>
